@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопки для зміни числа</title>
+    <style>
+        .counter-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .counter {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <button id="decrease">Менше</button>
+        <div id="counter" class="counter">0</div>
+        <button id="increase">Більше</button>
+    </div>
+
+    <script>
+        const counter = document.getElementById('counter');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+        let count = 0;
+
+        decreaseBtn.addEventListener('click', () => {
+            count--;
+            counter.textContent = count;
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            count++;
+            counter.textContent = count;
+        });
+    </script>
+</body>
+</html>

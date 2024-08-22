@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список статей</title>
+    <style>
+        .article {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="article">
+        <h2>Стаття 1</h2>
+        <p>Зміст статті 1...</p>
+    </div>
+    <div class="article">
+        <h2>Стаття 2</h2>
+        <p>Зміст статті 2...</p>
+    </div>
+    <div class="article">
+        <h2>Стаття 3</h2>
+        <p>Зміст статті 3...</p>
+    </div>
+    <div class="article">
+        <h2>Стаття 4</h2>
+        <p>Зміст статті 4...</p>
+    </div>
+    <!-- Більше статей -->
+
+    <button id="scrollToTopBtn" class="scroll-to-top">Вгору</button>
+
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

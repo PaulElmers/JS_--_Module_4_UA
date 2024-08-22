@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук країни</title>
+    <style>
+        .autocomplete-container {
+            position: relative;
+            width: 300px;
+            margin: 50px auto;
+        }
+        #countryInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .autocomplete-suggestions {
+            position: absolute;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: #fff;
+            width: 100%;
+            z-index: 10;
+        }
+        .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .autocomplete-suggestion:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="autocomplete-container">
+        <input type="text" id="countryInput" placeholder="Введіть назву країни">
+        <div id="suggestions" class="autocomplete-suggestions"></div>
+    </div>
+
+    <script>
+        const countries = [
+            "Україна", "Канада", "США", "Німеччина", "Франція", "Італія", "Японія", 
+            "Китай", "Бразилія", "Австралія", "Індія", "Мексика", "Аргентина", "Іспанія", 
+            "Польща", "Швеція", "Норвегія", "Фінляндія", "Данія", "Нідерланди"
+        ];
+
+        const countryInput = document.getElementById('countryInput');
+        const suggestionsContainer = document.getElementById('suggestions');
+
+        countryInput.addEventListener('input', () => {
+            const query = countryInput.value.toLowerCase();
+            suggestionsContainer.innerHTML = '';
+
+            if (query) {
+                const filteredCountries = countries.filter(country => 
+                    country.toLowerCase().includes(query)
+                ).slice(0, 10);
+
+                filteredCountries.forEach(country => {
+                    const suggestion = document.createElement('div');
+                    suggestion.classList.add('autocomplete-suggestion');
+                    suggestion.textContent = country;
+                    suggestion.addEventListener('click', () => {
+                        countryInput.value = country;
+                        suggestionsContainer.innerHTML = '';
+                    });
+                    suggestionsContainer.appendChild(suggestion);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
